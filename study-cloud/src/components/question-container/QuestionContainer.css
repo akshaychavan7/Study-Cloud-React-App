@@ -49,15 +49,7 @@ li {
 
 .accordion {
   background: aliceblue;
-}
-.correct-answer {
-  padding: 10px;
-  background-color: rgb(175, 241, 175);
-}
-
-.incorrect-answer {
-  padding: 10px;
-  background-color: rgb(241, 175, 175);
+  z-index: -1;
 }
 
 hr {

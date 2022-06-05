@@ -1,0 +1,11 @@
+.correct-answer {
+  border-radius: 5px;
+  padding: 10px;
+  background-color: rgb(175, 241, 175);
+}
+
+.incorrect-answer {
+  border-radius: 5px;
+  padding: 10px;
+  background-color: rgb(241, 175, 175);
+}
