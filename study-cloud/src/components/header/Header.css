@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Water+Brush&display=swap");
+
 .header {
   /* background-color: #d2c5fb; */
   position: fixed;
@@ -19,7 +22,9 @@
 }
 
 .header-title-text {
-  font-size: large;
+  font-size: x-large;
+  /* font-family: "Tangerine", cursive; */
+  font-family: "Water Brush", cursive;
   color: white;
   /* size: 50px; */
   margin-left: 60px;
