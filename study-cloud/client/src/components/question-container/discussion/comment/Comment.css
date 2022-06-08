@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap");
+
+.comments-container {
+  margin-bottom: 18px;
+}
+
+.comment-period-passed {
+  font-size: 13px;
+  color: dimgrey;
+}
+
+.vertical-center {
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center; /* align vertical */
+}
+
+.comment-text {
+  font-family: "Ubuntu", sans-serif;
+  word-spacing: 5px;
+}
+
+.icons-class {
+  color: cornflowerblue;
+}
+
+.icons-class:hover {
+  color: blueviolet;
+}
+
+.upvote-count-text {
+  font-size: 14px;
+  color: dimgrey;
+}

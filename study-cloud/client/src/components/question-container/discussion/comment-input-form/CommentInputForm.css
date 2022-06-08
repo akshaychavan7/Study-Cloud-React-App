@@ -1,0 +1,27 @@
+@media only screen and (max-width: 600px) {
+  .radio-group {
+    width: 100%;
+  }
+  .comment-button-div {
+    width: 10% !important;
+    margin-top: 3% !important;
+  }
+}
+
+.comment-button-div {
+  width: 15%;
+  margin-top: 1%;
+}
+
+.comment-textfield {
+  width: "100%";
+  margin-top: "1%";
+}
+
+.radio-button-group-label {
+  float: left;
+  height: 45px;
+  margin-top: 7px;
+  vertical-align: middle;
+  margin-right: 20px;
+}

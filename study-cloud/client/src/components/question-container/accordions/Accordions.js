@@ -4,6 +4,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Discussion from "../discussion/Discussion";
 
 const Accordions = (props) => {
   return (
@@ -29,10 +30,7 @@ const Accordions = (props) => {
           <Typography>Discussion</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
-          </Typography>
+          <Discussion />
         </AccordionDetails>
       </Accordion>
       <Accordion elevation={0} style={{ backgroundColor: "aliceblue" }}>
