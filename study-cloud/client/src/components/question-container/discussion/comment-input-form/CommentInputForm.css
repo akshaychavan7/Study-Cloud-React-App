@@ -25,3 +25,16 @@
   vertical-align: middle;
   margin-right: 20px;
 }
+
+.submit-warning {
+  color: deeppink;
+}
+
+.visible {
+  visibility: visible;
+}
+
+.hidden {
+  /* visibility: hidden; */
+  display: none;
+}

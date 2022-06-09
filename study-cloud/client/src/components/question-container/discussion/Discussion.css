@@ -1,5 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap");
+
 .discussion-section-div {
   margin-left: 1%;
   margin-right: 1%;
   /* margin: 1%; */
+}
+
+.no-comments-text {
+  font-family: "Ubuntu", sans-serif;
+  word-spacing: 2px;
+  overflow-wrap: anywhere;
+  font-weight: 600;
+  color: #5f5f5f;
+  margin-left: 10px;
 }

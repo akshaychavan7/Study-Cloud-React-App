@@ -30,7 +30,7 @@ const Accordions = (props) => {
           <Typography>Discussion</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Discussion />
+          <Discussion comments={props.comments} />
         </AccordionDetails>
       </Accordion>
       <Accordion elevation={0} style={{ backgroundColor: "aliceblue" }}>

@@ -1,6 +1,8 @@
+import React, { useState, useEffect } from "react";
 import Header from "./header/Header";
 import "./Main.css";
 import QuestionContainer from "./question-container/QuestionContainer";
+import { getAllComments } from "../services/commentsServicesClient";
 
 const questionsList = [
   {
@@ -53,6 +55,23 @@ const questionsList = [
 ];
 
 const Main = () => {
+  const [comments, setComments] = useState([]);
+  useEffect(() => {
+    (async () => {
+      const result = await getAllComments();
+      console.log(result);
+      setComments(result);
+    })();
+  }, []);
+
+  // filter the comments for given id
+  const getFilteredCommentsByID = (comments, index) => {
+    let filteredComments = comments.filter(
+      (comment) => comment.questionid === index
+    );
+    return filteredComments;
+  };
+
   return (
     <div>
       <Header />
@@ -68,6 +87,10 @@ const Main = () => {
               correctAnswer={questionObject.correctAnswer}
               image={questionObject.image}
               explaination={questionObject.explaination}
+              comments={getFilteredCommentsByID(
+                comments,
+                (index + 1).toString()
+              )}
             />
           );
         })}

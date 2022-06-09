@@ -18,6 +18,7 @@
 .comment-text {
   font-family: "Ubuntu", sans-serif;
   word-spacing: 5px;
+  overflow-wrap: anywhere;
 }
 
 .icons-class {

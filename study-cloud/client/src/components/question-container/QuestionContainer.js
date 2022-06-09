@@ -5,13 +5,13 @@ import Accordions from "./accordions/Accordions";
 const QuestionContainer = (props) => {
   return (
     <div className="outside-container">
+      {/* {console.log("filteredComments->", props.questionNumber, props.comments)} */}
       <div className="container-body">
         <div className="question-header">Question #{props.questionNumber}</div>
         <div>
           <div className="question-content">
             {props.question}
             <div>
-              {console.log("options", props.options)}
               <OptionsList
                 options={props.options}
                 correctAnswer={props.correctAnswer}
@@ -20,7 +20,7 @@ const QuestionContainer = (props) => {
           </div>
           <div>
             <hr />
-            <Accordions />
+            <Accordions comments={props.comments} />
           </div>
         </div>
       </div>

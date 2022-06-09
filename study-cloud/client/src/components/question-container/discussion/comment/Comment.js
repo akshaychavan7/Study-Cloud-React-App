@@ -2,8 +2,22 @@ import { Avatar, IconButton, Stack, Tooltip } from "@mui/material";
 import ThumbUpRoundedIcon from "@mui/icons-material/ThumbUpRounded";
 import ReportRoundedIcon from "@mui/icons-material/ReportRounded";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
+import AssistantPhotoRoundedIcon from "@mui/icons-material/AssistantPhotoRounded";
 import "./Comment.css";
-
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
 const Comment = (props) => {
   function stringToColor(string) {
     let hash = 0;
@@ -33,45 +47,53 @@ const Comment = (props) => {
         height: 26,
         fontSize: 10,
       },
-      children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
+      // children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
+      children: `${name[0].toString().toUpperCase()}`,
     };
   }
+
+  function calculateTimePeriodPassedFromNow(timestamp) {
+    // diffTimeMillis = Math.abs(new Date(timestamp) - new Date(Date.now()));
+    // diffTimeSeconds = Math.ceil(diffTimeMillis/1000);
+    let day = new Date(timestamp).getDay();
+    let monthIndex = new Date(timestamp).getMonth();
+    let year = new Date(timestamp).getFullYear();
+    // console.log(day, months[monthIndex], year, months[0], monthIndex);
+    return day + " " + months[monthIndex] + ", " + year;
+  }
+
   return (
     <div className="comments-container">
       <Stack direction="row" spacing={1}>
-        <Avatar {...stringAvatar("Akshay Chavan")} />
+        <Avatar {...stringAvatar(props.comment.userid)} />
         <div>
           <Stack direction="row" spacing={1}>
-            <span className="vertical-center">Akshay Chavan</span>
+            <span className="vertical-center">{props.comment.userid}</span>
             <span className="comment-period-passed vertical-center">
-              5 days, 19 hours ago
+              {calculateTimePeriodPassedFromNow(props.comment.timestamp)}
             </span>
           </Stack>
-          <p className="comment-text">
-            We recommend collecting users with the same responsibilities into
-            groups and assigning IAM roles to the groups rather than to
-            individual users. For example, you can create a "data scientist"
-            group and assign appropriate roles to enable interaction with
-            BigQuery and Cloud Storage. When a new data scientist joins your
-            team, you can simply add them to the group and they will inherit the
-            defined permissions. You can create and manage groups through the
-            Admin Console.
-          </p>
+          <p className="comment-text">{props.comment.comment}</p>
           <Stack direction="row" spacing={3} style={{ width: "100%" }}>
             <Stack direction="row" spacing={1}>
               <Tooltip title="Upvote">
-                <IconButton color="primary" component="span" size="small">
+                <IconButton
+                  color="primary"
+                  component="span"
+                  size="small"
+                  onClick={() => {}}
+                >
                   <ThumbUpRoundedIcon fontSize="inherit" />
                 </IconButton>
               </Tooltip>
               <span className="upvote-count-text vertical-center">
-                Upvoted 5 times
+                Upvoted {props.comment.votes} times
               </span>
             </Stack>
 
             <Tooltip title="Report">
               <IconButton color="primary" component="span" size="small">
-                <ReportRoundedIcon fontSize="inherit" />
+                <AssistantPhotoRoundedIcon fontSize="inherit" />
               </IconButton>
             </Tooltip>
             <Tooltip title="Delete comment">
