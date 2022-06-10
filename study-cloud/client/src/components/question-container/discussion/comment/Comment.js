@@ -53,6 +53,8 @@ const Comment = (props) => {
   }
 
   function calculateTimePeriodPassedFromNow(timestamp) {
+    // if (timestamp === "Now") timestamp = new Date();
+
     // diffTimeMillis = Math.abs(new Date(timestamp) - new Date(Date.now()));
     // diffTimeSeconds = Math.ceil(diffTimeMillis/1000);
     let day = new Date(timestamp).getDay();

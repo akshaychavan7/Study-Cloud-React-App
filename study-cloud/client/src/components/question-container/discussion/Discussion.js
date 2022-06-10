@@ -1,13 +1,25 @@
+import { useState } from "react";
 import CommentInputForm from "./comment-input-form/CommentInputForm";
 import Comment from "./comment/Comment";
 import "./Discussion.css";
 const Discussion = (props) => {
+  const [comments, setComments] = useState(props.comments);
+
+  function settingComments(obj) {
+    console.log("settingComments called", obj);
+    setComments(obj);
+  }
+
   return (
     <div className="discussion-section-div">
-      {/* {console.log("from discussion->", props.comments)} */}
-      <CommentInputForm />
-      {props.comments.length ? (
-        props.comments.map((comment) => {
+      {console.log("from discussion->", props.comments)}
+      <CommentInputForm
+        comments={comments}
+        setComments={settingComments}
+        questionNumber={props.questionNumber}
+      />
+      {comments.length ? (
+        comments.map((comment) => {
           return <Comment key={Math.random().toString()} comment={comment} />;
         })
       ) : (

@@ -9,6 +9,7 @@ import {
   TextField,
 } from "@mui/material";
 import { useState } from "react";
+import { addComment } from "../../../../services/commentsServicesClient";
 
 const CommentInputForm = (props) => {
   const [comment, setComment] = useState("");
@@ -16,11 +17,32 @@ const CommentInputForm = (props) => {
   const [submitWarningClasses, setSubmitWarningClasses] = useState(
     "submit-warning hidden"
   );
+
+  let answersMap = { A: "1", B: "2", C: "3", D: "4" };
+
   function submitComment() {
     if (comment.length == 0 || selectedOption.length == 0) {
       setSubmitWarningClasses("submit-warning visible");
     } else {
       setSubmitWarningClasses("submit-warning hidden");
+
+      let commentsObject = {
+        comment: comment, // needed for API
+        is_flagged: "false",
+        questionid: props.questionNumber.toString(), // needed for API
+        selected_answer: answersMap[selectedOption], // needed for API
+        timestamp: new Date(),
+        userid: "akshaychavan7", // needed for API
+        votes: "0",
+      };
+      addComment(commentsObject); // adding comments to server database
+
+      // set the comments so that UI will update
+      props.setComments([commentsObject, ...props.comments]);
+
+      // reset the controls, once comment has been successully posted
+      setComment("");
+      setSelectedOption("");
     }
   }
 
@@ -33,6 +55,7 @@ const CommentInputForm = (props) => {
         <RadioGroup
           row
           className="radio-group"
+          defaultValue={selectedOption}
           onChange={(event) => setSelectedOption(event.target.value)}
         >
           <FormControlLabel
