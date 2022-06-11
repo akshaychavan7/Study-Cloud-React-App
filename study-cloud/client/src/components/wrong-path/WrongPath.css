@@ -1,0 +1,18 @@
+.wrongpath-message {
+  text-align-last: center;
+  font-family: "Ubuntu";
+  font-size: x-large;
+  color: deeppink;
+  margin: 6%;
+}
+
+.robo-image {
+  width: 150px;
+  height: 200px;
+}
+
+.vertical-center {
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center; /* align vertical */
+}

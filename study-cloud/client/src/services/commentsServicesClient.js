@@ -1,10 +1,13 @@
+import config from "../configurations/config";
 var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
 
 // var baseURL = window.location.protocol + "//" + window.location.host + "/";
-var baseURL = "http://localhost:4000/";
+var baseURL = config.serverEndpoint
+  ? config.serverEndpoint
+  : "http://localhost:4000/";
 
-console.log("host", baseURL);
+console.log("server host", baseURL);
 
 export async function addComment(requestObject) {
   try {

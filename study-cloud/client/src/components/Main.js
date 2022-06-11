@@ -3,6 +3,7 @@ import Header from "./header/Header";
 import "./Main.css";
 import QuestionContainer from "./question-container/QuestionContainer";
 import { getAllComments } from "../services/commentsServicesClient";
+import { useNavigate } from "react-router";
 
 const questionsList = [
   {
@@ -54,13 +55,235 @@ const questionsList = [
   },
 ];
 
-const Main = () => {
+let testComments = [
+  {
+    questionid: "1",
+    userid: "dan80",
+    comment:
+      "C is correct - https://cloud.google.com/compute/docs/instances/managing-instance-access",
+    selected_answer: "3",
+    votes: "0",
+    is_flagged: "false",
+    timestamp: "2022-06-08T20:48:30.714Z",
+  },
+  {
+    questionid: "1",
+    userid: "adedj99",
+    comment:
+      'We recommend collecting users with the same responsibilities into groups and assigning IAM roles to the groups rather than to individual users. For example, you can create a "data scientist" group and assign appropriate roles to enable interaction with BigQuery and Cloud Storage. When a new data scientist joins your team, you can simply add them to the group and they will inherit the defined permissions. You can create and manage groups through the Admin Console.',
+    selected_answer: "3",
+    votes: "0",
+    is_flagged: "false",
+    timestamp: "2022-06-08T20:49:26.824Z",
+  },
+  {
+    questionid: "1",
+    userid: "zakhili",
+    comment: "Send private key to users is not safe, i think its C",
+    selected_answer: "3",
+    votes: "0",
+    is_flagged: "false",
+    timestamp: "2022-06-08T21:03:40.105Z",
+  },
+  {
+    questionid: "1",
+    userid: "pfabio",
+    comment:
+      "C is correct based on this site: https://cloud.google.com/compute/docs/instances/connecting-advanced (Recommended) Enable OS Login. OS Login uses IAM roles to provide your public SSH key to the instance through your Google Account or a managed user account.",
+    selected_answer: "3",
+    votes: "0",
+    is_flagged: "false",
+    timestamp: "2022-06-08T21:09:05.665Z",
+  },
+  {
+    questionid: "1",
+    userid: "AltHexMax",
+    comment:
+      "As it is giving permissions to a Group and each SSH key pair would be unique for each member.",
+    selected_answer: "3",
+    votes: "0",
+    is_flagged: "false",
+    timestamp: "2022-06-08T21:10:25.774Z",
+  },
+  {
+    questionid: "2",
+    userid: "CarlS",
+    comment:
+      "I got this question in one the trainings I did in udemy: https://www.udemy.com/course/google-cloud-associate-engineer-exam-practice-tests/?referralCode=810D02D4A159FC3E36CC\nB is correct. Pay attention to the question, is talking about custom VPC subnet and is not mentioning you will use automatic subnet mode creation. If you set subnet to custom, the minimum size is /8.",
+    selected_answer: "2",
+    votes: "0",
+    is_flagged: "false",
+    timestamp: "2022-06-09T11:10:23.524Z",
+  },
+  {
+    questionid: "3",
+    userid: "akshaychavan7",
+    comment: "test comment from UI",
+    selected_answer: "1",
+    votes: "0",
+    is_flagged: "false",
+    timestamp: "2022-06-09T19:24:59.655Z",
+  },
+  {
+    questionid: "3",
+    userid: "akshaychavan7",
+    comment: "test comment 2",
+    selected_answer: "2",
+    votes: "0",
+    is_flagged: "false",
+    timestamp: "2022-06-09T19:32:37.345Z",
+  },
+  {
+    questionid: "3",
+    userid: "akshaychavan7",
+    comment: "test comment 3",
+    selected_answer: "3",
+    votes: "0",
+    is_flagged: "false",
+    timestamp: "2022-06-09T19:33:43.165Z",
+  },
+  {
+    questionid: "3",
+    userid: "akshaychavan7",
+    comment: "test comment 4",
+    selected_answer: "4",
+    votes: "0",
+    is_flagged: "false",
+    timestamp: "2022-06-09T19:35:53.485Z",
+  },
+  {
+    questionid: "3",
+    userid: "akshaychavan7",
+    comment: "test comment 5",
+    selected_answer: "2",
+    votes: "0",
+    is_flagged: "false",
+    timestamp: "2022-06-09T19:43:42.065Z",
+  },
+  {
+    questionid: "3",
+    userid: "akshaychavan7",
+    comment: "test comment 6",
+    selected_answer: "3",
+    votes: "0",
+    is_flagged: "false",
+    timestamp: "2022-06-09T19:46:14.206Z",
+  },
+  {
+    questionid: "3",
+    userid: "akshaychavan7",
+    comment: "test comment 7",
+    selected_answer: "1",
+    votes: "0",
+    is_flagged: "false",
+    timestamp: "2022-06-09T19:47:48.135Z",
+  },
+  {
+    questionid: "3",
+    userid: "akshaychavan7",
+    comment: "test comment 8",
+    selected_answer: "1",
+    votes: "0",
+    is_flagged: "false",
+    timestamp: "2022-06-09T19:49:38.235Z",
+  },
+  {
+    questionid: "3",
+    userid: "akshaychavan7",
+    comment: "test comment 9",
+    selected_answer: "1",
+    votes: "0",
+    is_flagged: "false",
+    timestamp: "2022-06-09T19:52:29.326Z",
+  },
+  {
+    questionid: "3",
+    userid: "akshaychavan7",
+    comment: "test comment 10",
+    selected_answer: "1",
+    votes: "0",
+    is_flagged: "false",
+    timestamp: "2022-06-09T19:55:35.165Z",
+  },
+  {
+    questionid: "3",
+    userid: "akshaychavan7",
+    comment: "test comment 11",
+    selected_answer: "1",
+    votes: "0",
+    is_flagged: "false",
+    timestamp: "2022-06-09T19:56:57.180Z",
+  },
+  {
+    questionid: "3",
+    userid: "akshaychavan7",
+    comment: "test comment 12",
+    selected_answer: "2",
+    votes: "0",
+    is_flagged: "false",
+    timestamp: "2022-06-09T20:03:32.115Z",
+  },
+  {
+    questionid: "3",
+    userid: "akshaychavan7",
+    comment: "test comment 13",
+    selected_answer: "2",
+    votes: "0",
+    is_flagged: "false",
+    timestamp: "2022-06-09T20:05:36.025Z",
+  },
+  {
+    questionid: "3",
+    userid: "akshaychavan7",
+    comment: "test comment 14",
+    selected_answer: "3",
+    votes: "0",
+    is_flagged: "false",
+    timestamp: "2022-06-09T20:06:34.366Z",
+  },
+  {
+    questionid: "3",
+    userid: "akshaychavan7",
+    comment: "test comment 15",
+    selected_answer: "3",
+    votes: "0",
+    is_flagged: "false",
+    timestamp: "2022-06-09T20:08:00.395Z",
+  },
+  {
+    questionid: "4",
+    userid: "akshaychavan7",
+    comment: "Testing",
+    selected_answer: "2",
+    votes: "0",
+    is_flagged: "false",
+    timestamp: "2022-06-09T20:11:55.865Z",
+  },
+  {
+    questionid: "4",
+    userid: "akshaychavan7",
+    comment: "Testing2",
+    selected_answer: "1",
+    votes: "0",
+    is_flagged: "false",
+    timestamp: "2022-06-09T20:15:33.385Z",
+  },
+];
+
+const Main = (props) => {
   const [comments, setComments] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
+    console.log("props", props);
+    if (!props.loggedUserDetails) {
+      navigate("/login", {});
+    }
+
     (async () => {
       const result = await getAllComments();
       console.log(result);
       setComments(result);
+      // setComments(testComments);
     })();
   }, []);
 

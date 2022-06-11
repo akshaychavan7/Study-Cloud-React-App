@@ -55,7 +55,7 @@ const CommentInputForm = (props) => {
         <RadioGroup
           row
           className="radio-group"
-          defaultValue={selectedOption}
+          value={selectedOption}
           onChange={(event) => setSelectedOption(event.target.value)}
         >
           <FormControlLabel

@@ -18,6 +18,8 @@ const months = [
   "November",
   "December",
 ];
+
+let answerCharacter = ["A", "B", "C", "D"];
 const Comment = (props) => {
   function stringToColor(string) {
     let hash = 0;
@@ -75,7 +77,14 @@ const Comment = (props) => {
               {calculateTimePeriodPassedFromNow(props.comment.timestamp)}
             </span>
           </Stack>
-          <p className="comment-text">{props.comment.comment}</p>
+          <Tooltip
+            title={
+              "Selected answer: " +
+              answerCharacter[props.comment.selected_answer - 1]
+            }
+          >
+            <p className="comment-text">{props.comment.comment}</p>
+          </Tooltip>
           <Stack direction="row" spacing={3} style={{ width: "100%" }}>
             <Stack direction="row" spacing={1}>
               <Tooltip title="Upvote">
