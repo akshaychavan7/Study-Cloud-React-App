@@ -1,7 +1,20 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Home.css";
 
 const Home = (props) => {
-  return <div>Home component</div>;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate("/login", { state: {} });
+  }, []);
+
+  return (
+    <div>
+      <p>Welcome to Study Cloud!</p>
+      <p>Redirecting to login page.</p>
+    </div>
+  );
 };
 
 export default Home;

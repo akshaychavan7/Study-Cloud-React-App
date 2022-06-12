@@ -45,3 +45,14 @@
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
+
+.logged-user-name {
+  float: right;
+  margin-right: 10px;
+  color: white;
+  margin-top: 15px;
+}
+
+.select-class {
+  color: white;
+}

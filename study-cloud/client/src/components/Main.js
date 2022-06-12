@@ -297,7 +297,7 @@ const Main = (props) => {
 
   return (
     <div>
-      <Header />
+      <Header loggedUserDetails={props.loggedUserDetails} />
 
       <div className="questions-list-div">
         {questionsList.map((questionObject, index) => {

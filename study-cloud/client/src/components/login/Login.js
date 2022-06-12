@@ -24,21 +24,36 @@ const Login = () => {
     });
 
     window.google.accounts.id.renderButton(googlebuttonref.current, {
-      size: "medium",
+      theme: "outline",
+      size: "large",
     });
+    console.log("test->", window.google.accounts);
+    // window.google.accounts.id.prompt(); // also display the One Tap dialog
   });
 
   return (
     <div
       style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
+        backgroundImage:
+          "url(" +
+          "https://images.pexels.com/photos/34153/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350" +
+          ")",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
       }}
     >
-      <div ref={googlebuttonref}></div>
-      {user && navigate("/ace", { state: { user: user } })}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        <div ref={googlebuttonref}></div>
+        {user && navigate("/ace", { state: { user: user } })}
+      </div>
     </div>
   );
 };
