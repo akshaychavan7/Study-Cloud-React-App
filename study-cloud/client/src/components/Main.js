@@ -274,14 +274,12 @@ const Main = (props) => {
   const [comments, setComments] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    console.log("props", props);
     if (!props.loggedUserDetails) {
       navigate("/login", {});
     }
 
     (async () => {
       const result = await getAllComments();
-      console.log(result);
       setComments(result);
       // setComments(testComments);
     })();
@@ -314,6 +312,7 @@ const Main = (props) => {
                 comments,
                 (index + 1).toString()
               )}
+              loggedUserDetails={props.loggedUserDetails}
             />
           );
         })}

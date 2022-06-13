@@ -1,9 +1,18 @@
-import { Avatar, IconButton, Stack, Tooltip } from "@mui/material";
+import {
+  Alert,
+  Avatar,
+  IconButton,
+  Snackbar,
+  Stack,
+  Tooltip,
+} from "@mui/material";
 import ThumbUpRoundedIcon from "@mui/icons-material/ThumbUpRounded";
 import ReportRoundedIcon from "@mui/icons-material/ReportRounded";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 import AssistantPhotoRoundedIcon from "@mui/icons-material/AssistantPhotoRounded";
 import "./Comment.css";
+import { useState } from "react";
+import { upvoteComment } from "../../../../services/commentsServicesClient";
 const months = [
   "January",
   "February",
@@ -21,6 +30,14 @@ const months = [
 
 let answerCharacter = ["A", "B", "C", "D"];
 const Comment = (props) => {
+  console.log("test", props);
+  let upvotedByProps = props.comment.upvoted_by;
+  let upvotedByIntialArray = getUpvotedByArrayFromString(
+    upvotedByProps.substring(0, upvotedByProps.length - 1)
+  );
+  const [upvotedByList, setUpvotedByList] = useState(upvotedByIntialArray);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+
   function stringToColor(string) {
     let hash = 0;
     let i;
@@ -66,6 +83,56 @@ const Comment = (props) => {
     return day + " " + months[monthIndex] + ", " + year;
   }
 
+  // string list to array e.g. user1,user2,user3, => [user1, user2, user3]
+  function getUpvotedByArrayFromString(upvotedByStringList) {
+    let upvotedByArray = [];
+    for (let userID of upvotedByStringList.split(",")) {
+      upvotedByArray.push(userID);
+    }
+    console.log(upvotedByArray);
+    return upvotedByArray;
+  }
+
+  // function to check if the logged user has already upvoted this comment or not
+  function hasLoggedUserAlreadyUpvoted(userid) {
+    console.log("checking", userid, upvotedByList);
+
+    for (let upvotedByUserid of upvotedByList) {
+      if (userid == upvotedByUserid) return true;
+    }
+
+    return false;
+  }
+
+  function reportClickHandler() {}
+
+  function upvoteClickHandler(updvotedByUserID, commentUserID, comment) {
+    if (hasLoggedUserAlreadyUpvoted(updvotedByUserID)) {
+      handleSnackbarClick();
+    } else {
+      let requestParams = {
+        userid: commentUserID,
+        comment: comment,
+        updvotedByUserID: updvotedByUserID,
+      };
+      upvoteComment(requestParams);
+    }
+  }
+
+  function deleteClickHandler() {}
+
+  const handleSnackbarClick = () => {
+    setSnackbarOpen(true);
+  };
+
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setSnackbarOpen(false);
+  };
+
   return (
     <div className="comments-container">
       <Stack direction="row" spacing={1}>
@@ -92,7 +159,13 @@ const Comment = (props) => {
                   color="primary"
                   component="span"
                   size="small"
-                  onClick={() => {}}
+                  onClick={() =>
+                    upvoteClickHandler(
+                      props.loggedUserDetails.name,
+                      props.comment.userid,
+                      props.comment.comment
+                    )
+                  }
                 >
                   <ThumbUpRoundedIcon fontSize="inherit" />
                 </IconButton>
@@ -103,18 +176,41 @@ const Comment = (props) => {
             </Stack>
 
             <Tooltip title="Report">
-              <IconButton color="primary" component="span" size="small">
+              <IconButton
+                color="primary"
+                component="span"
+                size="small"
+                onClick={reportClickHandler}
+              >
                 <AssistantPhotoRoundedIcon fontSize="inherit" />
               </IconButton>
             </Tooltip>
             <Tooltip title="Delete comment">
-              <IconButton color="primary" component="span" size="small">
+              <IconButton
+                color="primary"
+                component="span"
+                size="small"
+                onClick={deleteClickHandler}
+              >
                 <DeleteRoundedIcon fontSize="inherit" />
               </IconButton>
             </Tooltip>
           </Stack>
         </div>
       </Stack>
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={6000}
+        onClose={handleSnackbarClose}
+      >
+        <Alert
+          onClose={handleSnackbarClose}
+          severity="error"
+          sx={{ width: "100%" }}
+        >
+          You have already upvoted this comment!
+        </Alert>
+      </Snackbar>
     </div>
   );
 };

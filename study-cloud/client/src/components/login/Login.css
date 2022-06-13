@@ -1,5 +1,6 @@
-.background {
-  /* background-image: url("../../assets/clouds.png"); */
-  background-image: url("https://media.geeksforgeeks.org/wp-content/uploads/rk.png");
-  background-size: "cover";
+.login-card {
+  width: 100px;
+  height: 300px;
+  display: flex;
+  align-items: center;
 }

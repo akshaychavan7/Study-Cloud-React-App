@@ -7,6 +7,8 @@ var baseURL = config.serverEndpoint
   ? config.serverEndpoint
   : "http://localhost:4000/";
 
+// for local server testing
+// var baseURL = "http://localhost:4000/";
 console.log("server host", baseURL);
 
 export async function addComment(requestObject) {
@@ -22,6 +24,22 @@ export async function addComment(requestObject) {
     return json_response;
   } catch (err) {
     console.log("Error inside addComment service(Client)", err);
+  }
+}
+
+export async function upvoteComment(requestObject) {
+  try {
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: JSON.stringify(requestObject),
+      redirect: "follow",
+    };
+    const response = await fetch(baseURL + "upvoteComment", requestOptions);
+    const json_response = await response.json();
+    return json_response;
+  } catch (err) {
+    console.log("Error inside upvoteComment service(Client)", err);
   }
 }
 

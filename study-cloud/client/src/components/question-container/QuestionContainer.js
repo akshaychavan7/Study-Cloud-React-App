@@ -22,6 +22,7 @@ const QuestionContainer = (props) => {
             <Accordions
               comments={props.comments}
               questionNumber={props.questionNumber}
+              loggedUserDetails={props.loggedUserDetails}
             />
           </div>
         </div>

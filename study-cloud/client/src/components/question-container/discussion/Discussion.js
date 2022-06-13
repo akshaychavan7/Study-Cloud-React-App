@@ -6,21 +6,26 @@ const Discussion = (props) => {
   const [comments, setComments] = useState(props.comments);
 
   function settingComments(obj) {
-    console.log("settingComments called", obj);
     setComments(obj);
   }
 
   return (
     <div className="discussion-section-div">
-      {console.log("from discussion->", props.comments)}
       <CommentInputForm
         comments={comments}
         setComments={settingComments}
         questionNumber={props.questionNumber}
+        loggedUserDetails={props.loggedUserDetails}
       />
       {comments.length ? (
         comments.map((comment) => {
-          return <Comment key={Math.random().toString()} comment={comment} />;
+          return (
+            <Comment
+              key={Math.random().toString()}
+              comment={comment}
+              loggedUserDetails={props.loggedUserDetails}
+            />
+          );
         })
       ) : (
         <div className="no-comments-text">

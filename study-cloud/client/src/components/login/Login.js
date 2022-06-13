@@ -27,7 +27,6 @@ const Login = () => {
       theme: "outline",
       size: "large",
     });
-    console.log("test->", window.google.accounts);
     // window.google.accounts.id.prompt(); // also display the One Tap dialog
   });
 
@@ -36,23 +35,37 @@ const Login = () => {
       style={{
         backgroundImage:
           "url(" +
-          "https://images.pexels.com/photos/34153/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350" +
+          "https://raw.githubusercontent.com/AkshayChavan7/Study-Cloud-React-App/master/study-cloud/client/src/assets/clouds.png" +
           ")",
-        backgroundPosition: "center",
-        backgroundSize: "cover",
+        backgroundPosition: "bottom",
         backgroundRepeat: "no-repeat",
       }}
     >
       <div
         style={{
+          border: "1px solid #e9e9e9",
+          width: "384px",
+          margin: "auto",
           display: "flex",
+          height: "500px",
+          background: "white",
           justifyContent: "center",
           alignItems: "center",
-          height: "100vh",
+          boxShadow: "rgb(99 99 99 / 20%) 0px 2px 8px 0px",
+          borderRadius: "9px",
         }}
       >
-        <div ref={googlebuttonref}></div>
-        {user && navigate("/ace", { state: { user: user } })}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+          }}
+        >
+          <div ref={googlebuttonref}></div>
+          {user && navigate("/ace", { state: { user: user } })}
+        </div>
       </div>
     </div>
   );

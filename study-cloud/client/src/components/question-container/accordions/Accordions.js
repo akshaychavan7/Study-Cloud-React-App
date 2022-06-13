@@ -9,6 +9,7 @@ import Discussion from "../discussion/Discussion";
 const Accordions = (props) => {
   return (
     <div>
+      {/* Explaination */}
       <Accordion elevation={0} style={{ backgroundColor: "aliceblue" }}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -21,6 +22,7 @@ const Accordions = (props) => {
           <Typography>{props.explaination}</Typography>
         </AccordionDetails>
       </Accordion>
+      {/* Discussion */}
       <Accordion elevation={0} style={{ backgroundColor: "aliceblue" }}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -33,9 +35,11 @@ const Accordions = (props) => {
           <Discussion
             comments={props.comments}
             questionNumber={props.questionNumber}
+            loggedUserDetails={props.loggedUserDetails}
           />
         </AccordionDetails>
       </Accordion>
+      {/* Question Stats */}
       <Accordion elevation={0} style={{ backgroundColor: "aliceblue" }}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}

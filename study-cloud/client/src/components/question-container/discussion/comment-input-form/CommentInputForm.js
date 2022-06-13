@@ -32,7 +32,7 @@ const CommentInputForm = (props) => {
         questionid: props.questionNumber.toString(), // needed for API
         selected_answer: answersMap[selectedOption], // needed for API
         timestamp: new Date(),
-        userid: "akshaychavan7", // needed for API
+        userid: props.loggedUserDetails.name, // needed for API
         votes: "0",
       };
       addComment(commentsObject); // adding comments to server database
@@ -48,6 +48,7 @@ const CommentInputForm = (props) => {
 
   return (
     <FormControl style={{ width: "100%", marginBottom: "50px" }}>
+      {console.log("props", props)}
       <div>
         <FormLabel className="radio-button-group-label">
           Choose answer
