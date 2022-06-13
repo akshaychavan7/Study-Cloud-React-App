@@ -37,6 +37,10 @@ const Comment = (props) => {
   );
   const [upvotedByList, setUpvotedByList] = useState(upvotedByIntialArray);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarSeverity, setSnackbarSeverity] = useState("error");
+  const [snackbarMessage, setSnackbarMessage] = useState(
+    "You have already upvoted this comment!"
+  );
 
   function stringToColor(string) {
     let hash = 0;
@@ -108,8 +112,11 @@ const Comment = (props) => {
 
   function upvoteClickHandler(updvotedByUserID, commentUserID, comment) {
     if (hasLoggedUserAlreadyUpvoted(updvotedByUserID)) {
-      handleSnackbarClick();
+      setSnackbarSeverity("error");
+      setSnackbarMessage("You have already upvoted this comment!");
     } else {
+      setSnackbarSeverity("success");
+      setSnackbarMessage("Upvoted successfully!");
       let requestParams = {
         userid: commentUserID,
         comment: comment,
@@ -117,6 +124,8 @@ const Comment = (props) => {
       };
       upvoteComment(requestParams);
     }
+
+    handleSnackbarClick();
   }
 
   function deleteClickHandler() {}
@@ -205,10 +214,10 @@ const Comment = (props) => {
       >
         <Alert
           onClose={handleSnackbarClose}
-          severity="error"
+          severity={snackbarSeverity}
           sx={{ width: "100%" }}
         >
-          You have already upvoted this comment!
+          {snackbarMessage}
         </Alert>
       </Snackbar>
     </div>
