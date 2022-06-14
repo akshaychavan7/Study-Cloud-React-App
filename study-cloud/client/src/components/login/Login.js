@@ -52,13 +52,16 @@ const Login = () => {
           width: "320px",
           margin: "auto",
           // display: "flex",
-          height: "290px",
+          height: "340px",
           background: "white",
           justifyContent: "center",
           // alignItems: "center",
           boxShadow: "rgb(99 99 99 / 20%) 0px 2px 8px 0px",
           borderRadius: "9px",
-          backgroundImage:"url("+{require("../../assets/yellow-logo.png")}+")",
+          // backgroundImage:
+          //   "url(" +
+          //   "https://raw.githubusercontent.com/AkshayChavan7/Study-Cloud-React-App/master/study-cloud/client/src/assets/yellow-logo.jpeg" +
+          //   ")",
         }}
       >
         <img
