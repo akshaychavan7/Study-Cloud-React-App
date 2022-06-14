@@ -35,6 +35,7 @@ const Comment = (props) => {
   let upvotedByIntialArray = getUpvotedByArrayFromString(
     upvotedByProps.substring(0, upvotedByProps.length - 1)
   );
+  const [upvoteCount, setUpvoteCount] = useState(props.comment.votes);
   const [upvotedByList, setUpvotedByList] = useState(upvotedByIntialArray);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarSeverity, setSnackbarSeverity] = useState("error");
@@ -123,6 +124,11 @@ const Comment = (props) => {
         updvotedByUserID: updvotedByUserID,
       };
       upvoteComment(requestParams);
+      // increment the upvote count and upvoted by variables in the current state
+      setUpvoteCount(parseInt(upvoteCount) + 1);
+      let updatedUpvotedByList = [...upvotedByList, updvotedByUserID];
+      console.log("updatedUpvotedByList", updatedUpvotedByList);
+      setUpvotedByList(updatedUpvotedByList);
     }
 
     handleSnackbarClick();
@@ -180,7 +186,7 @@ const Comment = (props) => {
                 </IconButton>
               </Tooltip>
               <span className="upvote-count-text vertical-center">
-                Upvoted {props.comment.votes} times
+                Upvoted {upvoteCount} times
               </span>
             </Stack>
 

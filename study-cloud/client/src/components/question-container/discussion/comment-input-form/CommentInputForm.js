@@ -34,6 +34,7 @@ const CommentInputForm = (props) => {
         timestamp: new Date(),
         userid: props.loggedUserDetails.name, // needed for API
         votes: "0",
+        upvoted_by: "", // needed for API
       };
       addComment(commentsObject); // adding comments to server database
 
