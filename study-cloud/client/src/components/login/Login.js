@@ -1,3 +1,4 @@
+import "./Login.css";
 import React, { useState, useRef } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useScript } from "../../hooks/useScript";
@@ -39,33 +40,36 @@ const Login = () => {
           ")",
         backgroundPosition: "bottom",
         backgroundRepeat: "no-repeat",
+        height: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
       }}
     >
       <div
         style={{
           border: "1px solid #e9e9e9",
-          width: "384px",
+          width: "320px",
           margin: "auto",
-          display: "flex",
-          height: "500px",
+          // display: "flex",
+          height: "290px",
           background: "white",
           justifyContent: "center",
-          alignItems: "center",
+          // alignItems: "center",
           boxShadow: "rgb(99 99 99 / 20%) 0px 2px 8px 0px",
           borderRadius: "9px",
+          backgroundImage:"url("+{require("../../assets/yellow-logo.png")}+")",
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "100vh",
-          }}
-        >
+        <img
+          src={require("../../assets/logo1.png")}
+          className="login-page-logo"
+        />
+        <div className="button-container-div">
           <div ref={googlebuttonref}></div>
           {user && navigate("/ace", { state: { user: user } })}
         </div>
+        <p className="copyright-text">©2022 Akshay Chavan</p>
       </div>
     </div>
   );

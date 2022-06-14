@@ -14,3 +14,21 @@
   color: #5f5f5f;
   margin-left: 10px;
 }
+
+.copyright-text {
+  font-family: "Ubuntu", sans-serif;
+  word-spacing: 2px;
+  font-size: 10px;
+  color: #929292;
+  font-weight: 700;
+  text-align: center;
+  position: relative;
+  bottom: -73px;
+}
+
+.button-container-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 46%;
+}
