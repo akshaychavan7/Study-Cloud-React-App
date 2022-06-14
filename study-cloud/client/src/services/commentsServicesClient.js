@@ -43,6 +43,38 @@ export async function upvoteComment(requestObject) {
   }
 }
 
+export async function flagComment(requestObject) {
+  try {
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: JSON.stringify(requestObject),
+      redirect: "follow",
+    };
+    const response = await fetch(baseURL + "flagComment", requestOptions);
+    const json_response = await response.json();
+    return json_response;
+  } catch (err) {
+    console.log("Error inside upvoteComment service(Client)", err);
+  }
+}
+
+export async function deleteComment(requestObject) {
+  try {
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: JSON.stringify(requestObject),
+      redirect: "follow",
+    };
+    const response = await fetch(baseURL + "deleteComment", requestOptions);
+    const json_response = await response.json();
+    return json_response;
+  } catch (err) {
+    console.log("Error inside upvoteComment service(Client)", err);
+  }
+}
+
 export async function getAllComments() {
   try {
     var requestOptions = {

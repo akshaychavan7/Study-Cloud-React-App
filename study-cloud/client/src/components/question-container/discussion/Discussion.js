@@ -24,6 +24,8 @@ const Discussion = (props) => {
               key={Math.random().toString()}
               comment={comment}
               loggedUserDetails={props.loggedUserDetails}
+              comments={props.comments}
+              setComments={settingComments}
             />
           );
         })

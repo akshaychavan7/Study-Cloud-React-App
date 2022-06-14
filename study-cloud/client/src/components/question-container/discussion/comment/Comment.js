@@ -12,7 +12,11 @@ import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 import AssistantPhotoRoundedIcon from "@mui/icons-material/AssistantPhotoRounded";
 import "./Comment.css";
 import { useState } from "react";
-import { upvoteComment } from "../../../../services/commentsServicesClient";
+import {
+  upvoteComment,
+  flagComment,
+  deleteComment,
+} from "../../../../services/commentsServicesClient";
 const months = [
   "January",
   "February",
@@ -81,7 +85,7 @@ const Comment = (props) => {
 
     // diffTimeMillis = Math.abs(new Date(timestamp) - new Date(Date.now()));
     // diffTimeSeconds = Math.ceil(diffTimeMillis/1000);
-    let day = new Date(timestamp).getDay();
+    let day = new Date(timestamp).getDate();
     let monthIndex = new Date(timestamp).getMonth();
     let year = new Date(timestamp).getFullYear();
     // console.log(day, months[monthIndex], year, months[0], monthIndex);
@@ -109,7 +113,19 @@ const Comment = (props) => {
     return false;
   }
 
-  function reportClickHandler() {}
+  function flagClickHandler(userid, comment) {
+    let requestObject = {
+      userid: userid,
+      comment: comment,
+    };
+
+    flagComment(requestObject);
+
+    // pop up message for success
+    setSnackbarSeverity("success");
+    setSnackbarMessage("Comment has been flaged for review by administrator!");
+    handleSnackbarClick();
+  }
 
   function upvoteClickHandler(updvotedByUserID, commentUserID, comment) {
     if (hasLoggedUserAlreadyUpvoted(updvotedByUserID)) {
@@ -134,7 +150,49 @@ const Comment = (props) => {
     handleSnackbarClick();
   }
 
-  function deleteClickHandler() {}
+  function deleteClickHandler(
+    deletionByUserID,
+    commentUserID,
+    commentToDelete
+  ) {
+    console.log("check if equal", deletionByUserID, commentUserID);
+    if (deletionByUserID === commentUserID) {
+      let requestObject = {
+        userid: commentUserID,
+        comment: commentToDelete,
+      };
+      deleteComment(requestObject);
+
+      //update state comments array
+      let commentsArray = [...props.comments];
+
+      commentsArray = commentsArray.filter((comment) => {
+        console.log(
+          "filter conditions",
+          comment.userid,
+          commentUserID,
+          comment.comment,
+          commentToDelete
+        );
+        return !(
+          comment.userid === commentUserID &&
+          comment.comment === commentToDelete
+        );
+      });
+
+      console.log("commentsArray", commentsArray);
+      props.setComments(commentsArray);
+
+      // pop up message for success
+      setSnackbarSeverity("success");
+      setSnackbarMessage("Comment deleted successfully!");
+    } else {
+      // pop up message for error
+      setSnackbarSeverity("error");
+      setSnackbarMessage("You cannot delete other user's comment!");
+    }
+    handleSnackbarClick();
+  }
 
   const handleSnackbarClick = () => {
     setSnackbarOpen(true);
@@ -190,12 +248,14 @@ const Comment = (props) => {
               </span>
             </Stack>
 
-            <Tooltip title="Report">
+            <Tooltip title="Flag/Report">
               <IconButton
                 color="primary"
                 component="span"
                 size="small"
-                onClick={reportClickHandler}
+                onClick={() =>
+                  flagClickHandler(props.comment.userid, props.comment.comment)
+                }
               >
                 <AssistantPhotoRoundedIcon fontSize="inherit" />
               </IconButton>
@@ -205,7 +265,13 @@ const Comment = (props) => {
                 color="primary"
                 component="span"
                 size="small"
-                onClick={deleteClickHandler}
+                onClick={() =>
+                  deleteClickHandler(
+                    props.loggedUserDetails.name,
+                    props.comment.userid,
+                    props.comment.comment
+                  )
+                }
               >
                 <DeleteRoundedIcon fontSize="inherit" />
               </IconButton>
