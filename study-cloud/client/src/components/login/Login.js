@@ -71,7 +71,7 @@ const Login = () => {
         <div className="button-container-div">
           <div ref={googlebuttonref}></div>
           {user &&
-            navigate("/study-cloud-react-app/ace", { state: { user: user } })}
+            navigate("/Study-Cloud-React-App/ace", { state: { user: user } })}
         </div>
         <p className="copyright-text">©2022 Akshay Chavan</p>
       </div>

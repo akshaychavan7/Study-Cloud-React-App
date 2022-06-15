@@ -12,9 +12,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/study-cloud-react-app" element={<Home />} />
-      <Route path="study-cloud-react-app/ace" element={<App />} />
-      <Route path="study-cloud-react-app/login" element={<Login />} />
+      <Route path="/Study-Cloud-React-App" element={<Home />} />
+      <Route path="Study-Cloud-React-App/ace" element={<App />} />
+      <Route path="Study-Cloud-React-App/login" element={<Login />} />
       <Route path="*" element={<WrongPath />} />
     </Routes>
   </BrowserRouter>
