@@ -26,7 +26,7 @@ const Header = (props) => {
   const id = open ? "simple-popover" : undefined;
 
   function logoutHandler() {
-    navigate("/login", {});
+    navigate("/study-cloud-react-app/login", {});
   }
 
   return (

@@ -6,7 +6,7 @@ const Home = (props) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    navigate("/login", { state: {} });
+    navigate("/study-cloud-react-app/login", { state: {} });
   }, []);
 
   return (

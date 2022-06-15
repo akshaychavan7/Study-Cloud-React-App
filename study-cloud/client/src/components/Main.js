@@ -275,7 +275,7 @@ const Main = (props) => {
   const navigate = useNavigate();
   useEffect(() => {
     if (!props.loggedUserDetails) {
-      navigate("/login", {});
+      navigate("/study-cloud-react-app/login", {});
     }
 
     (async () => {
