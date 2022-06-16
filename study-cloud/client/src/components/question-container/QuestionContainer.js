@@ -5,6 +5,7 @@ import Accordions from "./accordions/Accordions";
 const QuestionContainer = (props) => {
   return (
     <div className="outside-container">
+      {console.log("from QC", props)}
       <div className="container-body">
         <div className="question-header">Question #{props.questionNumber}</div>
         <div>

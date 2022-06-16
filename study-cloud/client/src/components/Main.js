@@ -279,9 +279,9 @@ const Main = (props) => {
     }
 
     (async () => {
-      const result = await getAllComments();
-      setComments(result);
-      // setComments(testComments);
+      // const result = await getAllComments();
+      // setComments(result);
+      setComments(testComments);
     })();
   }, []);
 

@@ -5,6 +5,7 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Discussion from "../discussion/Discussion";
+import BarChart from "./charts/BarChart";
 
 const Accordions = (props) => {
   return (
@@ -50,8 +51,7 @@ const Accordions = (props) => {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
+            <BarChart comments={props.comments} />
           </Typography>
         </AccordionDetails>
       </Accordion>

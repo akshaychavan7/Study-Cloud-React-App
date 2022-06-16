@@ -35,7 +35,9 @@ const months = [
 let answerCharacter = ["A", "B", "C", "D"];
 const Comment = (props) => {
   console.log("test", props);
-  let upvotedByProps = props.comment.upvoted_by;
+  let upvotedByProps = props?.comment?.upvoted_by
+    ? props.comment.upvoted_by
+    : "";
   let upvotedByIntialArray = getUpvotedByArrayFromString(
     upvotedByProps.substring(0, upvotedByProps.length - 1)
   );

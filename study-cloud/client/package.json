@@ -4,6 +4,7 @@
   "homepage": "https://akshaychavan7.github.io/Study-Cloud-React-App",
   "private": true,
   "dependencies": {
+    "@amcharts/amcharts5": "^5.2.8",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@mui/icons-material": "^5.8.2",
