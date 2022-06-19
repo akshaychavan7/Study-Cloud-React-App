@@ -16,7 +16,8 @@ const questionsList = [
       "Generate a new SSH key pair. Give the private key to each member of your team. Configure the public key as a project-wide public SSH key in your Cloud Platform project and allow project-wide public SSH keys on each instance.",
     ],
     correctAnswer: [3],
-    explaination: "",
+    explaination:
+      "Lorem ipsum dolor sit amet. Non sequi aliquam qui asperiores fuga ab nihil consequuntur aut illum veritatis non inventore ducimus. Et praesentium quisquam nam doloremque voluptatem aut labore. Non expedita cupiditate ut architecto eveniet est pariatur soluta aut minus voluptas ea magnam ipsam eos assumenda architecto.\nUt blanditiis modi quo excepturi omnis aut distinctio maxime nam optio quaerat et explicabo ducimus. Nam voluptatem odit eum placeat magni eum labore quisquam qui quod natus hic rerum alias.",
     explainationLink:
       "https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys",
     image: "",
@@ -27,6 +28,7 @@ const questionsList = [
     options: ["0.0.0.0/0", "10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16"],
     correctAnswer: [2],
     explaination: "",
+    explainationLink: "",
     image: "",
   },
   {
@@ -40,6 +42,7 @@ const questionsList = [
     ],
     correctAnswer: [1],
     explaination: "",
+    explainationLink: "",
     image: "",
   },
   {
@@ -53,6 +56,7 @@ const questionsList = [
     ],
     correctAnswer: [3],
     explaination: "",
+    explainationLink: "",
     image: "",
   },
 ];
@@ -310,6 +314,7 @@ const Main = (props) => {
               correctAnswer={questionObject.correctAnswer}
               image={questionObject.image}
               explaination={questionObject.explaination}
+              explainationLink={questionObject.explainationLink}
               comments={getFilteredCommentsByID(
                 comments,
                 (index + 1).toString()

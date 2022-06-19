@@ -1,0 +1,8 @@
+.reference-div {
+  overflow-wrap: anywhere;
+}
+
+.explaination-text {
+  margin-top: 10px;
+  text-align: justify;
+}

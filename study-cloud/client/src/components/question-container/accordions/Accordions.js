@@ -20,7 +20,11 @@ const Accordions = (props) => {
           <Typography>Explaination</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>{props.explaination}</Typography>
+          <div className="reference-div">
+            Reference:{" "}
+            <a href={props.explainationLink}>{props.explainationLink}</a>
+          </div>
+          <div className="explaination-text">{props.explaination}</div>
         </AccordionDetails>
       </Accordion>
       {/* Discussion */}

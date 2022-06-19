@@ -24,6 +24,8 @@ const QuestionContainer = (props) => {
               comments={props.comments}
               questionNumber={props.questionNumber}
               loggedUserDetails={props.loggedUserDetails}
+              explaination={props.explaination}
+              explainationLink={props.explainationLink}
             />
           </div>
         </div>
