@@ -28,7 +28,8 @@ const questionsList = [
       "You need to create a custom VPC with a single subnet. The subnet's range must be as large as possible. Which range should you use?",
     options: ["0.0.0.0/0", "10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16"],
     correctAnswer: [2],
-    explaination: "",
+    explaination:
+      "Lorem ipsum dolor sit amet. Non sequi aliquam qui asperiores fuga ab nihil consequuntur aut illum veritatis non inventore ducimus. Et praesentium quisquam nam doloremque voluptatem aut labore. Non expedita cupiditate ut architecto eveniet est pariatur soluta aut minus voluptas ea magnam ipsam eos assumenda architecto.\nUt blanditiis modi quo excepturi omnis aut distinctio maxime nam optio quaerat et explicabo ducimus. Nam voluptatem odit eum placeat magni eum labore quisquam qui quod natus hic rerum alias.",
     explainationLink: "",
     image: "",
   },

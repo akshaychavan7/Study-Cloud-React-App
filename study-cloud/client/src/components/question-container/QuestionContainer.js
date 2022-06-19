@@ -11,13 +11,17 @@ const QuestionContainer = (props) => {
         <div>
           <div className="question-content">
             {props.question}
-            <div className="question-image-container">
-              <img
-                className="question-image"
-                src={props.image}
-                alt="question image"
-              />
-            </div>
+            {props.image.length > 0 ? (
+              <div className="question-image-container">
+                <img
+                  className="question-image"
+                  src={props.image}
+                  alt="question image"
+                />
+              </div>
+            ) : (
+              <span></span>
+            )}
             <div>
               <OptionsList
                 options={props.options}
