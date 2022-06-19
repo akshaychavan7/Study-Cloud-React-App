@@ -20,7 +20,8 @@ const questionsList = [
       "Lorem ipsum dolor sit amet. Non sequi aliquam qui asperiores fuga ab nihil consequuntur aut illum veritatis non inventore ducimus. Et praesentium quisquam nam doloremque voluptatem aut labore. Non expedita cupiditate ut architecto eveniet est pariatur soluta aut minus voluptas ea magnam ipsam eos assumenda architecto.\nUt blanditiis modi quo excepturi omnis aut distinctio maxime nam optio quaerat et explicabo ducimus. Nam voluptatem odit eum placeat magni eum labore quisquam qui quod natus hic rerum alias.",
     explainationLink:
       "https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys",
-    image: "",
+    image:
+      "https://raw.githubusercontent.com/AkshayChavan7/Study-Cloud-React-App/master/study-cloud/client/src/assets/sample-image.jpeg",
   },
   {
     question:

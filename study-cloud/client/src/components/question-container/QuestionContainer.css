@@ -55,3 +55,14 @@ li {
 hr {
   border-top: 1px solid rgb(231, 231, 231);
 }
+
+.question-image-container {
+  display: flex;
+  place-content: center;
+}
+
+.question-image {
+  width: 95%;
+  height: auto;
+  margin: 10px;
+}
