@@ -19,6 +19,38 @@ const BarChart = (props) => {
   const [widthB, setWidthB] = useState(bPercentage.toFixed(2).toString() + "%");
   const [widthC, setWidthC] = useState(cPercentage.toFixed(2).toString() + "%");
   const [widthD, setWidthD] = useState(dPercentage.toFixed(2).toString() + "%");
+  // const [divBClasses, setDivBClasses] = useState("div-b");
+  // const [divCClasses, setDivCClasses] = useState("div-c");
+  let divAClasses = "div-a border-radius-left";
+  let divBClasses = "div-b";
+  let divCClasses = "div-c";
+  let divDClasses = "div-d border-radius-right";
+
+  // for div A border radius
+  if (bPercentage <= 0 && cPercentage <= 0 && dPercentage <= 0) {
+    divAClasses = divAClasses + " border-radius-right";
+  }
+
+  // for div B border radius
+  if (aPercentage <= 0) {
+    divBClasses = divBClasses + " border-radius-left";
+  }
+  if (cPercentage <= 0 && dPercentage <= 0) {
+    divBClasses = divBClasses + " border-radius-right";
+  }
+
+  // for div C border radius
+  if (aPercentage <= 0 && bPercentage <= 0) {
+    divCClasses = divCClasses + " border-radius-left";
+  }
+  if (dPercentage <= 0) {
+    divCClasses = divCClasses + " border-radius-right";
+  }
+
+  // for div D border radius
+  if (aPercentage <= 0 && bPercentage <= 0 && cPercentage <= 0) {
+    divDClasses = divDClasses + " border-radius-left";
+  }
 
   function getQuestionStats() {
     for (let comment of props.comments) {
@@ -50,7 +82,7 @@ const BarChart = (props) => {
           }
           arrow
         >
-          <span className="div-a" style={{ width: widthA }}>
+          <span className="div-a border-radius-left" style={{ width: widthA }}>
             A
           </span>
         </Tooltip>
@@ -60,7 +92,7 @@ const BarChart = (props) => {
           }
           arrow
         >
-          <span className="div-b" style={{ width: widthB }}>
+          <span className={divBClasses} style={{ width: widthB }}>
             B
           </span>
         </Tooltip>
@@ -70,7 +102,7 @@ const BarChart = (props) => {
           }
           arrow
         >
-          <span className="div-c" style={{ width: widthC }}>
+          <span className={divCClasses} style={{ width: widthC }}>
             C
           </span>
         </Tooltip>
@@ -80,7 +112,7 @@ const BarChart = (props) => {
           }
           arrow
         >
-          <span className="div-d" style={{ width: widthD }}>
+          <span className="div-d border-radius-right" style={{ width: widthD }}>
             D
           </span>
         </Tooltip>

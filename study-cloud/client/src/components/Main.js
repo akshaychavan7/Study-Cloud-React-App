@@ -17,6 +17,8 @@ const questionsList = [
     ],
     correctAnswer: [3],
     explaination: "",
+    explainationLink:
+      "https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys",
     image: "",
   },
   {
@@ -279,9 +281,9 @@ const Main = (props) => {
     }
 
     (async () => {
-      // const result = await getAllComments();
-      // setComments(result);
-      setComments(testComments);
+      const result = await getAllComments();
+      setComments(result);
+      // setComments(testComments);
     })();
   }, []);
 
