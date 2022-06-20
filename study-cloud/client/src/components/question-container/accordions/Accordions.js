@@ -60,6 +60,7 @@ const Accordions = (props) => {
         <AccordionDetails>
           <Typography>
             <BarChart comments={props.comments} />
+            *Based on community votes distribution
           </Typography>
         </AccordionDetails>
       </Accordion>

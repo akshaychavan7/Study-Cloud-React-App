@@ -78,7 +78,10 @@ const BarChart = (props) => {
       <div className="bar-container">
         <Tooltip
           title={
-            (parseFloat(widthA.split("%")[0]) + 0.2).toFixed(2).toString() + "%"
+            (parseFloat(widthA.split("%")[0]) + 0.2).toFixed(2).toString() +
+            "% | " +
+            aCount +
+            " votes"
           }
           arrow
         >
@@ -88,7 +91,10 @@ const BarChart = (props) => {
         </Tooltip>
         <Tooltip
           title={
-            (parseFloat(widthB.split("%")[0]) + 0.2).toFixed(2).toString() + "%"
+            (parseFloat(widthB.split("%")[0]) + 0.2).toFixed(2).toString() +
+            "% | " +
+            bCount +
+            " votes"
           }
           arrow
         >
@@ -98,7 +104,10 @@ const BarChart = (props) => {
         </Tooltip>
         <Tooltip
           title={
-            (parseFloat(widthC.split("%")[0]) + 0.2).toFixed(2).toString() + "%"
+            (parseFloat(widthC.split("%")[0]) + 0.2).toFixed(2).toString() +
+            "% | " +
+            cCount +
+            " votes"
           }
           arrow
         >
@@ -108,7 +117,10 @@ const BarChart = (props) => {
         </Tooltip>
         <Tooltip
           title={
-            (parseFloat(widthD.split("%")[0]) + 0.2).toFixed(2).toString() + "%"
+            (parseFloat(widthD.split("%")[0]) + 0.2).toFixed(2).toString() +
+            "% | " +
+            dCount +
+            " votes"
           }
           arrow
         >
