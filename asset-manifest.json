@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/Study-Cloud-React-App/static/css/main.d9d19aab.css",
-    "main.js": "/Study-Cloud-React-App/static/js/main.50cd31b0.js",
+    "main.js": "/Study-Cloud-React-App/static/js/main.241457a5.js",
     "static/js/787.0943a927.chunk.js": "/Study-Cloud-React-App/static/js/787.0943a927.chunk.js",
     "static/media/robot.png": "/Study-Cloud-React-App/static/media/robot.404242371c64a9ee58c5.png",
     "static/media/logo1.png": "/Study-Cloud-React-App/static/media/logo1.fd470ae896369467f5c6.png",
     "index.html": "/Study-Cloud-React-App/index.html",
     "main.d9d19aab.css.map": "/Study-Cloud-React-App/static/css/main.d9d19aab.css.map",
-    "main.50cd31b0.js.map": "/Study-Cloud-React-App/static/js/main.50cd31b0.js.map",
+    "main.241457a5.js.map": "/Study-Cloud-React-App/static/js/main.241457a5.js.map",
     "787.0943a927.chunk.js.map": "/Study-Cloud-React-App/static/js/787.0943a927.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d9d19aab.css",
-    "static/js/main.50cd31b0.js"
+    "static/js/main.241457a5.js"
   ]
 }
